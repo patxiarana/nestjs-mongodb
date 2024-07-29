@@ -6,7 +6,7 @@ import { CreateProductDto } from './dto/product.dto';
 @Injectable()
 export class ProductService {
 
-    constructor(@InjectModel('Product') private readonly productModel: Model<Product>) {}
+    constructor(@InjectModel('product') private readonly productModel: Model<Product>) {}
 
     async getProducts() : Promise<Product[]> { 
      const products =  await this.productModel.find()
