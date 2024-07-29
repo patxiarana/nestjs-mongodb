@@ -16,17 +16,20 @@ export class ProductService {
    async getProduct(productID:string) : Promise<Product> { {
          const product = await this.productModel.findById(productID)
          return product;
+    } }
+
+   async createProduct(createProductDto: CreateProductDto) : Promise<Product> {
+        const product =  new this.productModel(createProductDto)
+       return await product.save(); 
+        
     }
 
-    createProduct(){
-
+    async deleteProduct(productID: string) : Promise<Product> { 
+       const deleteProduct = await this.productModel.findByIdAndDelete(productID)
+          return deleteProduct;
     }
 
-    deleteProduct(){ 
-
-    }
-
-    updateProduct(){
+    updateProduct(productID:string , createProductDto: CreateProductDto) {
 
     }
 
