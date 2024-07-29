@@ -33,4 +33,11 @@ export class ProductController {
       return res.status(HttpStatus.OK).json(product)
    
     }
+
+    @Delete('/delete/:productID') 
+   async deleteProduct(@Res() res , @Param('productID') productID) {
+        const product = await this.productService.deleteProduct(productID)
+        if(!product) throw new NotFoundException('Product not found')
+            return res.status(HttpStatus.OK).json(product)
+    }
 }
